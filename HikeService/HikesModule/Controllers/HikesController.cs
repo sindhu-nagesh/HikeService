@@ -22,7 +22,14 @@ namespace HikeService.HikesModule.Controllers
 		public bool Post (string type, string user, [FromBody] UserData data)
 		{
 		    IDataStorageService dataStorageService = ServiceFactory.GetStorageService();
-		    return dataStorageService.WriteUrl(user, type, data.Value);
+		    if (string.IsNullOrEmpty(data.Value) && data.Value.StartsWith("http://www.wta.org/go-hiking/hikes/"))
+		    {
+		        return dataStorageService.WriteUrl(user, type, data.Value);
+		    }
+		    else
+		    {
+                return false;
+		    }	    
 		}
 	}
 
