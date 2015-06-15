@@ -25,9 +25,7 @@ namespace HikeService.HikesModule.Controllers
 		    if (!string.IsNullOrEmpty(data.Value) && data.Value.StartsWith("http://www.wta.org/go-hiking/hikes/"))
 		    {
 		        return dataStorageService.WriteUrl(user, type, data.Value);
-		    }
-		    else
-		    {
+		    } else {
                 return false;
 		    }	    
 		}
