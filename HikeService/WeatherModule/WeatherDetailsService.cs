@@ -1,10 +1,11 @@
 ﻿using HikeService.HikesModule.Models;
+using HikeService.MapsModule.Models;
 using HikeService.WeatherModule.Models;
 
 namespace HikeService.WeatherModule
 {
-    public interface IWeatherDetailsService
+    public interface WeatherDetailsService
     {
-        WeatherDetails[] GetWeatherForecastDetails(LocationDetails locationDetails);
+        WeatherDetails[] GetWeatherForecastDetails(GeographicalLocation locationDetails);
     }
 }

@@ -113,9 +113,15 @@
     <Compile Include="HikesModule\Models\HikeSummary.cs" />
     <Compile Include="HikesModule\Services\HikeDetailsService.cs" />
     <Compile Include="HikesModule\Services\impl\WtaHikeDetailsService.cs" />
+    <Compile Include="MapsModule\Models\GeographicalLocation.cs" />
+    <Compile Include="MapsModule\Models\MapDetails.cs" />
+    <Compile Include="MapsModule\Models\PhysicalAddress.cs" />
+    <Compile Include="MapsModule\Services\impl\GoogleMapsService.cs" />
+    <Compile Include="MapsModule\Services\MapsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StorageModule\Constants.cs" />
-    <Compile Include="StorageModule\Models\MyDataEntity.cs" />
+    <Compile Include="StorageModule\Models\HikeDataEntity.cs" />
+    <Compile Include="StorageModule\Models\UserDataEntity.cs" />
     <Compile Include="StorageModule\Services\DataStorageService.cs" />
     <Compile Include="StorageModule\Services\impl\AzureDataStorageService.cs" />
     <Compile Include="StorageModule\Services\impl\FileDataStorageService.cs" />

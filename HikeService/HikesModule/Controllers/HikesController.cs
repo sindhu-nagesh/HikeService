@@ -13,15 +13,16 @@ namespace HikeService.HikesModule.Controllers
 		public List<HikeSummary> Get (string type, string user)
 		{
             HikeSummaryBuilder summaryBuilder = BuilderFactory.GetHikeSummaryBuilder();
-		    IDataStorageService dataStorageService = ServiceFactory.GetStorageService();
+		    DataStorageService dataStorageService = ServiceFactory.GetStorageService();
 
 		    List<string> urls = dataStorageService.GetUrls(type, user);
+            
 		    return urls.Select(url => summaryBuilder.Build(url)).ToList();
 		}
 
 		public bool Post (string type, string user, [FromBody] UserData data)
 		{
-		    IDataStorageService dataStorageService = ServiceFactory.GetStorageService();
+		    DataStorageService dataStorageService = ServiceFactory.GetStorageService();
 		    if ((!string.IsNullOrEmpty(data.Value)) && data.Value.StartsWith("http://www.wta.org/") && data.Value.Contains("/go-hiking/hikes/"))
 		    {
 		        return dataStorageService.WriteUrl(user, type, data.Value);
@@ -29,6 +30,12 @@ namespace HikeService.HikesModule.Controllers
                 return false;
 		    }	    
 		}
+
+	    public bool Delete(string type, string user, [FromBody] UserData data)
+	    {
+            DataStorageService dataStorageService = ServiceFactory.GetStorageService();
+	        return dataStorageService.DeleteUrl(user, type, data.Value);
+	    }
 	}
 
 	public class UserData

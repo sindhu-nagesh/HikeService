@@ -4,7 +4,7 @@ using System.IO;
 
 namespace HikeService.StorageModule.Services.impl
 {
-	public class FileDataStorageService : IDataStorageService
+	public class FileDataStorageService : DataStorageService
 	{
 		private const string FileExtension = ".txt";
 		public bool WriteUrl(string user, string type, string url)
@@ -27,7 +27,12 @@ namespace HikeService.StorageModule.Services.impl
             return result;
 		}
 
-		private string GetFileName(string user)
+	    public bool DeleteUrl(string user, string type, string url)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    private string GetFileName(string user)
 		{
 			return @"E:\MyProjects\Files\" + user + FileExtension;
 		}

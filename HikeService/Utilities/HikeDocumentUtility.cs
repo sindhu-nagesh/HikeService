@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using HikeService.HikesModule.Models;
+using HikeService.MapsModule.Models;
 using HtmlAgilityPack;
 
 namespace HikeService.Utilities
@@ -39,11 +40,11 @@ namespace HikeService.Utilities
             return double.Parse(node.InnerText);
 		}
 
-		public static LocationDetails GetLocation(HtmlDocument doc)
+		public static GeographicalLocation GetLocation(HtmlDocument doc)
 		{
 			var latitude = doc.DocumentNode.SelectSingleNode("//span[@class='"+_latitude+"']");
 			var longitude = doc.DocumentNode.SelectSingleNode("//span[@class='"+_longitude+"']");			
-			LocationDetails location = new LocationDetails();
+			GeographicalLocation location = new GeographicalLocation();
 			location.Latitude = double.Parse(latitude.InnerText);			
 			location.Longitude = double.Parse(longitude.InnerText);			
 			return location;
